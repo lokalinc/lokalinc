@@ -103,7 +103,7 @@ justify-content:center;
 
 .section-image img{
 width:100%;
-max-width:400px;
+max-width:340px;
 }
 
 .section-points{
@@ -134,6 +134,44 @@ box-shadow:0 12px 25px rgba(0,0,0,0.08);
 .section-summary{
 margin-top:40px;
 text-align:center;
+}
+
+/* ---------- Solution Image Stack ---------- */
+
+.solution-images{
+position:relative;
+height:420px;
+}
+
+.solution-images img{
+position:absolute;
+border-radius:20px;
+box-shadow:0 20px 40px rgba(0,0,0,0.15);
+}
+
+/* main center image */
+.main-img{
+width:220px;
+left:50%;
+transform:translateX(-50%);
+z-index:2;
+}
+
+/* side images */
+.overlay-img{
+width:180px;
+top:40px;
+opacity:0.9;
+}
+
+.img-left{
+left:10%;
+transform:rotate(-8deg);
+}
+
+.img-right{
+right:10%;
+transform:rotate(8deg);
 }
 
 /* ---------- Features ---------- */
@@ -342,10 +380,12 @@ Find housing, travel support, and real help from people who understand your situ
     <div class="section-point">All requests and help in one place, without scattered platforms</div>
   </div>
 
-  <div class="section-image">
-    <img src="Light1.jpg" alt="LokaLinc app screen" loading="lazy">
-    <img src="Light3.jpg" class="img2" alt="LokaLinc app feature" loading="lazy">
-    <img src="Light5.jpg" class="img3" alt="LokaLinc app interface" loading="lazy">
+  <div class="section-image solution-images">
+
+    <img src="Light1.jpg" class="main-img" alt="LokaLinc app screen" loading="lazy">
+    <img src="Light3.jpg" class="overlay-img img-left" alt="LokaLinc app feature" loading="lazy">
+    <img src="Light5.jpg" class="overlay-img img-right" alt="LokaLinc app interface" loading="lazy">
+  
   </div>
 
 </div>
