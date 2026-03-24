@@ -5,8 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link rel="icon" type="image/png" href="/Logo_LokaLinc_Transparent.png">
+<link rel="canonical" href="https://lokalinc.de/">
 
-<title>LokaLinc — Living and Moving Together</title>
+<title>LokaLinc - Community Platform for Expats</title>
+<meta name="description" content="Community for expats in Germany. LokaLinc is a community platform where expats can find temporary housing, travel support, and get help from others in one place.">
+<meta property="og:title" content="LokaLinc – Community Platform for Expats">
+<meta property="og:description" content="Find housing, travel support, and get help from a trusted expat community in one place.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://lokalinc.de">
+<meta property="og:image" content="https://lokalinc.de/Logo_LokaLinc_Transparent.png">
 
 <style>
 
@@ -25,12 +32,25 @@ margin:auto;
 padding:30px 20px;
 }
 
+section{
+margin-top:40px;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
 /* ---------- Header ---------- */
 
 header{
+position:sticky;
+top:0;
+background:#f8fafc;
+z-index:100;
 display:flex;
 align-items:center;
 gap:12px;
+padding:10px 0;
 margin-bottom:40px;
 }
 
@@ -47,7 +67,9 @@ color:#10b981;
 .hero{
 padding:70px 20px 30px;
 text-align:center;
-background:linear-gradient(135deg,#ecfdf5 0%, #f8fafc 100%);
+/*-- background:linear-gradient(135deg,#ecfdf5 0%, #f8fafc 100%); --*/
+background:linear-gradient(155deg, #f0fdf4 0%, #ecfdf5 100%);
+/*-- background:linear-gradient(135deg, #10b981 0%, #059669 100%); --*/
 border-radius:20px;
 }
 
@@ -63,191 +85,61 @@ color:#10b981;
 margin-bottom:10px;
 }
 
-/* ---------- PROBLEM ---------- */
+/* ---------- PROBLEM + SOLUTION ---------- */
 
-.problem{
-margin-top:10px;
-text-align:center;
-}
-
-.chaos-wrap{
-position:relative;
-height:620px;
-max-width:1000px;
-margin:auto;
-}
-
-/* phone */
-
-.phone{
-position:absolute;
-left:50%;
-top:50%;
-transform:translate(-50%,-50%) scale(0.8);
-width:300px;
-height:620px;
-border-radius:42px;
-background:#111;
-box-shadow:
-0 25px 60px rgba(0,0,0,0.25),
-inset 0 0 0 2px #1f2937;
-overflow:hidden;
-}
-
-/* status bar */
-
-.topbar{
-position:absolute;
-top:0;
-left:0;
-right:0;
-height:44px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:0 24px;
-font-size:12px;
-font-weight:600;
-color:#fff;
-z-index:10;
-}
-
-/* notch */
-
-.notch{
-position:absolute;
-top:0px;
-left:50%;
-transform:translateX(-50%);
-width:110px;
-height:30px;
-background:#000;
-border-bottom-left-radius: 18px;
-border-bottom-right-radius: 18px;
-z-index:11;
-}
-
-/* WhatsApp header */
-
-.chat-header{
-position:absolute;
-top:36px;
-left:0;
-right:0;
-height:50px;
-background:#075e54;
-color:white;
-display:flex;
-align-items:center;
-padding:0 12px;
-font-size:14px;
-z-index:4;
-}
-
-.chat-header .dp{
-width:28px;
-height:28px;
-border-radius:50%;
-background:#cbd5e1;
-margin-right:10px;
-}
-
-/* screen */
-
-.screen{
-position:absolute;
-top:0;
-bottom:0;
-left:0;
-right:0;
-background:#efe7dd;
-background-image:
-radial-gradient(#d6ccc2 1px, transparent 1px);
-background-size:20px 20px;
-padding-top:90px;
-}
-
-/* bubbles */
-
-.bubble{
-position:absolute;
-padding:12px 16px;
-border-radius:12px;
-font-size:13px;
-line-height:1.4;
-box-shadow:0 8px 20px rgba(0,0,0,0.15);
-max-width:220px;
-}
-
-.green{ background:#dcf8c6; }
-.white{ background:#fff; }
-
-.time{
-font-size:10px;
-color:#6b7280;
-margin-top:5px;
-text-align:right;
-}
-
-/* positions (within limits) */
-  
-.b1{ top:120px; left:35%; transform:rotate(-6deg);}
-.b2{ top:170px; left:20%; transform:rotate(6deg);}
-.b3{ top:220px; left:50%; transform:rotate(-2deg);}
-.b4{ top:270px; left:20%; transform:rotate(10deg);}
-.b5{ top:320px; left:58%; transform:rotate(-6deg);}
-.b6{ top:400px; left:-5%; transform:rotate(7deg);}
-.b7{ top:440px; left:40%; transform:rotate(-3deg);}
-.b8{ top:510px; left:25%; transform:rotate(-5deg);}
-.b9{ top:150px; left:-10px; transform:rotate(-10deg);}
-.b10{ top:350px; left:50px; transform:rotate(12deg);}
-.b11{ bottom:40px; left:-15px; transform:rotate(12deg);}
-
-/* ---------- Solution ---------- */
-
-.solution-wrap{
+.section-row{
 display:flex;
 align-items:center;
 gap:50px;
 flex-wrap:wrap;
-margin-top:100px;
+margin-top:40px;
 }
 
-.solution-text{ flex:1; }
+.section-image{
+flex:1;
+display:flex;
+justify-content:center;
+}
 
-.solution-steps{
+.section-image img{
+width:100%;
+max-width:400px;
+}
+
+.section-points{
+flex:1;
 display:flex;
 flex-direction:column;
 gap:12px;
 }
 
-.solution-step{
+.section-point{
 background:white;
 padding:14px 16px;
 border-radius:10px;
 box-shadow:0 8px 18px rgba(0,0,0,0.05);
 }
 
-.solution-image{
-flex:1;
-display:flex;
-justify-content:center;
-align-items:center;
+.section-point,
+.card{
+transition:transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.solution-image img{
-width:200px;
-border-radius:20px;
-box-shadow:0 20px 40px rgba(0,0,0,0.15);
+.section-point:hover,
+.card:hover{
+transform:translateY(-3px);
+box-shadow:0 12px 25px rgba(0,0,0,0.08);
 }
 
-.img2{ margin-left:-50px; }
-.img3{ margin-left:-50px; }
+.section-summary{
+margin-top:40px;
+text-align:center;
+}
 
 /* ---------- Features ---------- */
 
 .features{
-margin-top:60px;
+margin-top:50px;
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:30px;
@@ -262,17 +154,6 @@ box-shadow:0 10px 25px rgba(0,0,0,0.06);
 
 .card h3{
 color:#10b981;
-}
-
-/* ---------- Waitlist ---------- */
-
-.waitlist{
-text-align:center;
-margin-top:100px;
-background:white;
-padding:40px;
-border-radius:14px;
-box-shadow:0 10px 25px rgba(0,0,0,0.05);
 }
 
 /* ---------- Footer ---------- */
@@ -294,6 +175,102 @@ text-decoration:none;
 color:#6b7280;
 }
 
+/* ---------- CTA ---------- */
+
+.cta{
+margin-top:20px;
+}
+
+.cta-btn{
+display:inline-block;
+padding:12px 20px;
+background:#10b981;
+color:white;
+border-radius:8px;
+text-decoration:none;
+font-weight:600;
+transition:0.2s;
+}
+
+.cta-btn:hover{
+background:#059669;
+}
+
+/* ---------- Launch Section ---------- */
+
+.launch{
+margin-top:30px;
+text-align:center;
+}
+
+.launch-badges{
+margin-top:20px;
+display:flex;
+justify-content:center;
+gap:30px;
+}
+
+.launch-badge-item{
+display:flex;
+flex-direction:column;
+align-items:center;
+}
+
+.launch-badges img{
+height:50px;
+object-fit:contain;
+}
+
+.launch-coming{
+margin-top:6px;
+font-size:12px;
+color:#10b981;
+font-weight:600;
+}
+
+.launch-text{
+margin-top:20px;
+font-size:16px;
+color:#374151;
+}
+
+.launch-note{
+margin-top:12px;
+font-size:12px;
+color:#6b7280;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width:768px){
+
+.hero{
+padding:40px 15px;
+}
+
+.hero-brand{
+font-size:28px;
+}
+
+.section-row{
+flex-direction:column;
+gap:20px;
+}
+
+.solution-image img{
+width:140px;
+}
+
+.img2,.img3{
+margin-left:0;
+}
+
+.features{
+grid-template-columns:1fr;
+}
+
+}
+
 </style>
 </head>
 
@@ -301,57 +278,48 @@ color:#6b7280;
 
 <div class="container">
 
+<!---------- Header section ---------->
+
 <header>
-<img src="Logo_LokaLinc_Transparent.png" class="logo">
+<img src="Logo_LokaLinc_Transparent.png" class="logo" alt="LokaLinc logo">
 <div class="brand">LokaLinc</div>
 </header>
+
+<!---------- Hero section ---------->
 
 <section class="hero">
 <div class="hero-brand">LokaLinc</div>
 <div class="tagline">Living and Moving Together</div>
-<h1>Community for expats in Germany</h1>
-<p>Find housing, travel support, and real help from people who understand your situation.</p>
+<h1>A community platform for expats in Germany</h1>
+<p>
+Connect with people who understand your situation and get the support you need without searching everywhere.<br>
+Find housing, travel support, and real help from people who understand your situation.
+</p>
 </section>
+
+<!---------- Problem section ---------->
 
 <section class="problem">
 
-<h2>Still doing it the hard way?</h2>
+<h2 style="text-align:center;">Still doing it the hard way?</h2>
 
-<div class="chaos-wrap">
+<div class="section-row">
 
-<div class="phone">
+  <div class="section-image">
+    <img src="problem_section.png" alt="Scattered WhatsApp and community requests" loading="lazy">
+  </div>
 
-<div class="topbar">
-<span>9:41</span>
-<span>📶 🔋</span>
-</div>
-
-<div class="notch"></div>
-
-<div class="chat-header">
-<div class="dp"></div>
-<span>WhatsApp Groups</span>
-</div>
-
-<div class="screen"></div>
+  <div class="section-points">
+    <div class="section-point">Jumping between multiple social media groups...</div>
+    <div class="section-point">Hoping someone replies in time...</div>
+    <div class="section-point">Searching everywhere for a place to stay...</div>
+    <div class="section-point">Posting in multiple places just to get a response...</div>
+    <div class="section-point">Trying to find someone who can actually help...</div>
+  </div>
 
 </div>
 
-<div class="bubble green b1">Need help for my mother 🙏<div class="time">13:42</div></div>
-<div class="bubble white b2">Hello, is anyone traveling from Munich to Bangalore on the 23rd?<div class="time">18:05</div></div>
-<div class="bubble green b3">Check some WhatsApp group<div class="time">12:21</div></div>
-<div class="bubble white b4">Does anyone have a FB/WA group link for Berlin?<div class="time">20:17</div></div>
-<div class="bubble green b5">Tried everywhere 😞<div class="time">09:58</div></div>
-<div class="bubble green b6">I’m looking for someone who does kitchen installation (Küchenmontage). Any suggestions or contacts would be appreciated!<div class="time">22:11</div></div>
-<div class="bubble white b7">Hello everyone, anyone travelling from India to Hamburg? I need some urgent baby oil 🙏<div class="time">14:33</div></div>
-<div class="bubble green b8">Any group for accommodation in Hamburg??<div class="time">19:26</div></div>
-<div class="bubble green b9">Anyone??<div class="time">16:12</div></div>
-<div class="bubble white b10">Try asking around<div class="time">11:48</div></div>
-<div class="bubble white b11">Please help 🙏<div class="time">21:03</div></div>
-
-</div>
-
-<div style="margin-top:60px;">
+<div class="section-summary">
 <p>You eventually find a solution. But it takes time, effort, and sometimes a bit of luck.</p>
 <p>It works. But it should not be this hard.</p>
 <p><strong>There should be a simpler way.</strong></p>
@@ -359,28 +327,36 @@ color:#6b7280;
 
 </section>
 
-<section class="solution-wrap">
+<!---------- Solution section ---------->
 
-<div class="solution-text">
+<section class="solution">
 
-<h2>That is exactly why LokaLinc exists</h2>
+<h2 style="text-align:center;">Why LokaLinc exists</h2>
 
-<div class="solution-steps">
-<div class="solution-step">📍 Find temporary housing when you need it</div>
-<div class="solution-step">✈️ Connect with people for travel support</div>
-<div class="solution-step">💬 Ask questions and get real answers from the community</div>
-<div class="solution-step">🌐 Everything in one place — no more scattered platforms</div>
+<div class="section-row">
+
+  <div class="section-points">
+    <div class="section-point">Reach people who are actually relevant to your request</div>
+    <div class="section-point">Post once instead of searching and posting across multiple groups</div>
+    <div class="section-point">Get faster responses from people who have already faced similar situations</div>
+    <div class="section-point">All requests and help in one place, without scattered platforms</div>
+  </div>
+
+  <div class="section-image">
+    <img src="Light1.jpg" alt="LokaLinc app screen" loading="lazy">
+    <img src="Light3.jpg" class="img2" alt="LokaLinc app feature" loading="lazy">
+    <img src="Light5.jpg" class="img3" alt="LokaLinc app interface" loading="lazy">
+  </div>
+
 </div>
 
-</div>
-
-<div class="solution-image">
-<img src="Light1.jpg">
-<img src="Light3.jpg" class="img2">
-<img src="Light5.jpg" class="img3">
+<div class="section-summary">
+<p>This is how LokaLinc simplifies the process and makes help more accessible.</p>
 </div>
 
 </section>
+
+<!---------- Feature section ---------->
 
 <section>
 
@@ -390,36 +366,62 @@ color:#6b7280;
 
 <div class="card">
 <h3>Temporary Housing</h3>
-<p>Find or offer short term stays when moving between cities</p>
+<p>Find or offer short-term stays when moving between cities, especially during transitions like studies, jobs, or relocation</p>
 </div>
 
 <div class="card">
 <h3>Travel Support</h3>
-<p>Connect with people travelling similar routes</p>
+<p>Connect with people traveling similar routes to accompany someone, assist during travel, or carry small items and documents</p>
 </div>
 
 <div class="card">
 <h3>Community Discussions</h3>
-<p>Ask questions and share experiences</p>
+<p>Ask questions and get practical answers from people who have already dealt with similar situations in their local area</p>
 </div>
 
 <div class="card">
 <h3>Built for Expats</h3>
-<p>Designed around real challenges people face</p>
+<p>Designed around real everyday challenges like housing, travel coordination, and navigating life in a new environment</p>
 </div>
 
 </div>
 
 </section>
 
-<section class="waitlist">
+<!---------- Launch / Waitlist section ---------->
 
-<h2>Get early access</h2>
+<section class="launch">
 
-<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdR5SzuFea_y5iV_zatorZxH6Rm6RoHTKcKM335wVNL7zJxOQ/viewform?embedded=true"
-width="100%" height="900" frameborder="0">Loading…</iframe>
+<div class="launch-badges">
+
+  <div class="launch-badge-item">
+    <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store">
+    <div class="launch-coming">Coming soon</div>
+  </div>
+
+  <div class="launch-badge-item">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play">
+    <div class="launch-coming">Coming soon</div>
+  </div>
+
+</div>
+
+<p class="launch-text">
+Get notified when LokaLinc launches.<br>
+Join the waitlist to be among the first users.
+</p>
+
+<a href="https://docs.google.com/forms/d/e/1FAIpQLSdR5SzuFea_y5iV_zatorZxH6Rm6RoHTKcKM335wVNL7zJxOQ/viewform" target="_blank" class="cta-btn">
+Join waitlist
+</a>
+
+<p class="launch-note">
+No marketing emails. You can opt out anytime.
+</p>
 
 </section>
+
+<!---------- Footer section ---------->
 
 <footer>
 
