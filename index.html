@@ -155,14 +155,14 @@ transition:transform 0.3s ease, opacity 0.3s ease;
 
 /* center */
 .main-img{
-width:180px;
-z-index:2;
+width:45vw;
+max-width:180px;
 }
 
 /* sides */
 .overlay-img{
-width:130px;
-opacity:0.6;
+width:28vw;
+max-width:130px;
 }
 
 /* slight tilt */
@@ -178,6 +178,11 @@ transform:rotate(4deg);
 .solution-images img:hover{
 transform:scale(1.05);
 opacity:1;
+}
+
+.solution-images{
+flex-wrap:nowrap;
+overflow:hidden;
 }
 
 /* ---------- Features ---------- */
@@ -302,12 +307,17 @@ align-items:center;
 gap:20px;
 }
 
-.solution-image img{
-width:140px;
+.solution-images{
+gap:10px;
 }
 
-.img2,.img3{
-margin-left:0;
+.main-img{
+width:50vw;
+}
+
+.overlay-img{
+width:25vw;
+opacity:0.5;
 }
 
 .features{
