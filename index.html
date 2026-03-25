@@ -18,6 +18,35 @@
 
 <style>
 
+<script>
+const images = document.querySelectorAll('.solution-images img');
+
+images.forEach((img, index) => {
+  img.addEventListener('click', () => {
+    
+    images.forEach(i => {
+      i.classList.remove('active','img-left','img-right');
+    });
+
+    img.classList.add('active');
+
+    if(index === 0){
+      images[1].classList.add('img-right');
+      images[2].classList.add('img-right');
+    }
+    else if(index === 1){
+      images[0].classList.add('img-left');
+      images[2].classList.add('img-right');
+    }
+    else{
+      images[0].classList.add('img-left');
+      images[1].classList.add('img-left');
+    }
+
+  });
+});
+</script>
+
 /* ---------- Base ---------- */
 
 body{
@@ -162,6 +191,8 @@ box-shadow:0 20px 40px rgba(0,0,0,0.18);
 
 /* ---------- Solution Images ---------- */
 
+/* ---------- Solution Images FIXED ---------- */
+
 .solution-images{
 position:relative;
 height:260px;
@@ -177,27 +208,28 @@ border-radius:20px;
 box-shadow:0 15px 30px rgba(0,0,0,0.12);
 transition:all 0.3s ease;
 cursor:pointer;
-opacity:0.6;
 }
 
-/* active center */
+/* center */
 .solution-images img.active{
-width:180px;
+width:170px;
 z-index:3;
-opacity:1;
 transform:translateX(0) scale(1);
+opacity:1;
 }
 
 /* left */
-.img-left{
-transform:translateX(-60px) scale(0.9);
+.solution-images img.left{
+transform:translateX(-80px) scale(0.85);
 z-index:1;
+opacity:0.6;
 }
 
 /* right */
-.img-right{
-transform:translateX(60px) scale(0.9);
+.solution-images img.right{
+transform:translateX(80px) scale(0.85);
 z-index:1;
+opacity:0.6;
 }
 
 /* ---------- Features ---------- */
@@ -322,19 +354,6 @@ align-items:center;
 gap:20px;
 }
 
-.solution-images{
-gap:10px;
-}
-
-.main-img{
-width:50vw;
-}
-
-.overlay-img{
-width:25vw;
-opacity:0.5;
-}
-
 .features{
 grid-template-columns:1fr;
 }
@@ -343,35 +362,6 @@ grid-template-columns:1fr;
 
 </style>
 </head>
-
-<script>
-const images = document.querySelectorAll('.solution-images img');
-
-images.forEach((img, index) => {
-  img.addEventListener('click', () => {
-    
-    images.forEach(i => {
-      i.classList.remove('active','img-left','img-right');
-    });
-
-    img.classList.add('active');
-
-    if(index === 0){
-      images[1].classList.add('img-right');
-      images[2].classList.add('img-right');
-    }
-    else if(index === 1){
-      images[0].classList.add('img-left');
-      images[2].classList.add('img-right');
-    }
-    else{
-      images[0].classList.add('img-left');
-      images[1].classList.add('img-left');
-    }
-
-  });
-});
-</script>
   
 <body>
 
@@ -443,9 +433,9 @@ Find housing, travel support, and real help from people who understand your situ
 
   <div class="section-image solution-images">
 
-    <img src="Light3.jpg" class="img-left">
+    <img src="Light3.jpg" class="left">
     <img src="Light1.jpg" class="active">
-    <img src="Light5.jpg" class="img-right">
+    <img src="Light5.jpg" class="right">
   
   </div>
 
