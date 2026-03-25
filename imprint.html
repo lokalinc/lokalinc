@@ -10,33 +10,36 @@
 
 <style>
 
+/* ---------- Base ---------- */
+
 body{
 margin:0;
 font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
 background:#f8fafc;
 color:#1f2937;
-
-display:flex;
-flex-direction:column;
-min-height:100vh;
 }
 
 .container{
-max-width:1100px;
+max-width:1200px;
 margin:auto;
-padding:40px 20px;
-width:100%;
+padding:30px 20px;
 }
 
-.page-main{
-flex:1;
-}
+/* ---------- Header ---------- */
 
 header{
+position:sticky;
+top:0;
+background:rgba(236, 253, 246, 0.7);
+backdrop-filter:blur(8px);
+-webkit-backdrop-filter:blur(8px);
+z-index:100;
 display:flex;
 align-items:center;
 gap:12px;
-margin-bottom:60px;
+padding:15px 20px;
+margin-bottom:20px;
+box-shadow:0 2px 10px rgba(0,0,0,0.05);
 }
 
 .brand-link{
@@ -48,14 +51,16 @@ color:inherit;
 }
 
 .logo{
-height:42px;
+height:40px;
 }
 
 .brand{
-font-size:30px;
+font-size:26px;
 font-weight:800;
 color:#10b981;
 }
+
+/* ---------- Page ---------- */
 
 .page-card{
 background:white;
@@ -67,6 +72,7 @@ line-height:1.7;
 
 .page-card h1{
 margin-top:0;
+margin-bottom:10px;
 }
 
 .page-card a{
@@ -89,15 +95,20 @@ color:#ffffff !important;
 font-size:15px;
 }
 
+/* ---------- Footer ---------- */
+
 footer{
-margin-top:100px;
-padding-top:30px;
+margin-top:20px;
+padding:30px 20px;
 border-top:1px solid #e5e7eb;
 display:flex;
 justify-content:space-between;
 flex-wrap:wrap;
 font-size:14px;
 color:#6b7280;
+max-width:1200px;
+margin-left:auto;
+margin-right:auto;
 }
 
 footer a{
@@ -111,7 +122,7 @@ color:#6b7280;
 
 <body>
 
-<div class="container page-main">
+<!---------- Header ---------->
 
 <header>
 <a href="/" class="brand-link">
@@ -119,6 +130,10 @@ color:#6b7280;
   <div class="brand">LokaLinc</div>
 </a>
 </header>
+
+<div class="container">
+
+<!---------- Content ---------->
 
 <div class="page-card">
 
@@ -131,7 +146,7 @@ Parth Patel
 
 <p>
 <strong>Address</strong><br>
-Stömmerstr. 26<br>
+Stömmerstraße 26<br>
 Ingolstadt, 85055<br>
 Germany
 </p>
@@ -150,7 +165,7 @@ Germany
 
 </div>
 
-<div class="container">
+<!---------- Footer ---------->
 
 <footer>
 <div>© 2026 LokaLinc</div>
@@ -160,8 +175,6 @@ Germany
 <a href="/imprint.html">Imprint</a>
 </div>
 </footer>
-
-</div>
 
 </body>
 </html>
