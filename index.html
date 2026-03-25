@@ -138,51 +138,66 @@ margin-top:40px;
 text-align:center;
 }
 
-/* ---------- Solution Image Stack ---------- */
-
-.solution-images{
+.section-image{
+min-height:260px;
 display:flex;
 align-items:center;
 justify-content:center;
-gap:20px;
+}
+
+.section-image img{
+width:160px;
+max-width:100%;
+border-radius:20px;
+box-shadow:0 15px 30px rgba(0,0,0,0.12);
+transition:transform 0.3s ease, box-shadow 0.3s ease;
+cursor:pointer;
+}
+
+.section-image img:hover,
+.section-image img:active{
+transform:scale(1.05);
+box-shadow:0 20px 40px rgba(0,0,0,0.18);
+}
+
+/* ---------- Solution Images ---------- */
+
+.solution-images{
+position:relative;
+height:260px;
+display:flex;
+align-items:center;
+justify-content:center;
 }
 
 .solution-images img{
+position:absolute;
+width:140px;
 border-radius:20px;
-box-shadow:0 20px 40px rgba(0,0,0,0.12);
-transition:transform 0.3s ease, opacity 0.3s ease;
+box-shadow:0 15px 30px rgba(0,0,0,0.12);
+transition:all 0.3s ease;
+cursor:pointer;
+opacity:0.6;
 }
 
-/* center */
-.main-img{
-width:45vw;
-max-width:180px;
-}
-
-/* sides */
-.overlay-img{
-width:28vw;
-max-width:130px;
-}
-
-/* slight tilt */
-.img-left{
-transform:rotate(-4deg);
-}
-
-.img-right{
-transform:rotate(4deg);
-}
-
-/* hover effect */
-.solution-images img:hover{
-transform:scale(1.05);
+/* active center */
+.solution-images img.active{
+width:180px;
+z-index:3;
 opacity:1;
+transform:translateX(0) scale(1);
 }
 
-.solution-images{
-flex-wrap:nowrap;
-overflow:hidden;
+/* left */
+.img-left{
+transform:translateX(-60px) scale(0.9);
+z-index:1;
+}
+
+/* right */
+.img-right{
+transform:translateX(60px) scale(0.9);
+z-index:1;
 }
 
 /* ---------- Features ---------- */
@@ -329,9 +344,36 @@ grid-template-columns:1fr;
 </style>
 </head>
 
+<script>
+const images = document.querySelectorAll('.solution-images img');
+
+images.forEach((img, index) => {
+  img.addEventListener('click', () => {
+    
+    images.forEach(i => {
+      i.classList.remove('active','img-left','img-right');
+    });
+
+    img.classList.add('active');
+
+    if(index === 0){
+      images[1].classList.add('img-right');
+      images[2].classList.add('img-right');
+    }
+    else if(index === 1){
+      images[0].classList.add('img-left');
+      images[2].classList.add('img-right');
+    }
+    else{
+      images[0].classList.add('img-left');
+      images[1].classList.add('img-left');
+    }
+
+  });
+});
+</script>
+  
 <body>
-
-
 
 <!---------- Header section ---------->
 
@@ -401,9 +443,9 @@ Find housing, travel support, and real help from people who understand your situ
 
   <div class="section-image solution-images">
 
-    <img src="Light3.jpg" class="overlay-img img-left">
-    <img src="Light1.jpg" class="main-img">
-    <img src="Light5.jpg" class="overlay-img img-right">
+    <img src="Light3.jpg" class="img-left">
+    <img src="Light1.jpg" class="active">
+    <img src="Light5.jpg" class="img-right">
   
   </div>
 
