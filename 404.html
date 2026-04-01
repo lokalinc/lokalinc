@@ -2,37 +2,62 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Redirecting...</title>
+<title>LokaLinc</title>
 
 <script>
 (function () {
 
-  var path = window.location.pathname.toLowerCase();
+  var path = window.location.pathname;
 
-  /* allow real pages */
-  if (
-    path === "/privacy.html" ||
-    path === "/support.html" ||
-    path === "/imprint.html"
-  ) {
-    return;
-  }
-
-  /* handle app links */
+  // Check if it is a deep link
   if (
     path.startsWith("/sublet/") ||
-    path.startsWith("/community/") ||
-    path.startsWith("/reset-password")
+    path.startsWith("/travel/") ||
+    path.startsWith("/community/")
   ) {
-    window.location.replace("/");
-    return;
+
+    // Try to open app (Android example)
+    var appLink = "lokalinc://" + path;
+
+    // Redirect attempt
+    window.location.href = appLink;
+
+    // If app not opened, stay and show fallback
   }
 
 })();
 </script>
 
+<style>
+body{
+  font-family:Arial, sans-serif;
+  text-align:center;
+  padding:40px;
+}
+.btn{
+  display:inline-block;
+  margin:10px;
+  padding:12px 20px;
+  background:#10b981;
+  color:white;
+  text-decoration:none;
+  border-radius:6px;
+}
+</style>
+
 </head>
 
 <body>
+
+<h2>Open in LokaLinc</h2>
+
+<p>This content is available in the LokaLinc app.</p>
+<p>Install the app to view it.</p>
+
+<br>
+
+<a class="btn" href="#">Download for Android</a>
+<a class="btn" href="#">Download for iOS</a>
+
 </body>
 </html>
