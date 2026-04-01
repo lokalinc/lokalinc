@@ -16,10 +16,9 @@
   ) {
 
     var appLink = "lokalinc://" + path;
-    var clickedAt = Date.now();
     var hasOpened = false;
 
-    // Detect if browser goes to background (app opened)
+    // Detect app open
     document.addEventListener("visibilitychange", function () {
       if (document.hidden) {
         hasOpened = true;
@@ -29,15 +28,14 @@
     // Try opening app
     window.location.href = appLink;
 
-    // Fallback logic
+    // After delay, if app opened → hide fallback
     setTimeout(function () {
-      var elapsed = Date.now() - clickedAt;
-
-      // If app did NOT open
-      if (!hasOpened && elapsed < 3000) {
+      if (hasOpened) {
+        document.getElementById("fallback").style.display = "none";
+      } else {
         document.getElementById("fallback").style.display = "block";
       }
-    }, 1500);
+    }, 1200);
 
   }
 
@@ -60,7 +58,7 @@ body{
   border-radius:6px;
 }
 #fallback{
-  display:none;
+  display:block;
 }
 </style>
 
