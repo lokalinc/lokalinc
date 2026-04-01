@@ -9,20 +9,36 @@
 
   var path = window.location.pathname;
 
-  // Check if it is a deep link
   if (
     path.startsWith("/sublet/") ||
     path.startsWith("/travel/") ||
     path.startsWith("/community/")
   ) {
 
-    // Try to open app (Android example)
     var appLink = "lokalinc://" + path;
+    var clickedAt = Date.now();
+    var hasOpened = false;
 
-    // Redirect attempt
+    // Detect if browser goes to background (app opened)
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden) {
+        hasOpened = true;
+      }
+    });
+
+    // Try opening app
     window.location.href = appLink;
 
-    // If app not opened, stay and show fallback
+    // Fallback logic
+    setTimeout(function () {
+      var elapsed = Date.now() - clickedAt;
+
+      // If app did NOT open
+      if (!hasOpened && elapsed < 3000) {
+        document.getElementById("fallback").style.display = "block";
+      }
+    }, 1500);
+
   }
 
 })();
@@ -43,11 +59,16 @@ body{
   text-decoration:none;
   border-radius:6px;
 }
+#fallback{
+  display:none;
+}
 </style>
 
 </head>
 
 <body>
+
+<div id="fallback">
 
 <h2>Open in LokaLinc</h2>
 
@@ -56,8 +77,12 @@ body{
 
 <br>
 
+<!-- Replace these links later -->
+<a class="btn" href="lokalinc://">Open in App</a>
 <a class="btn" href="#">Download for Android</a>
 <a class="btn" href="#">Download for iOS</a>
+
+</div>
 
 </body>
 </html>
