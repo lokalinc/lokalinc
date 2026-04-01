@@ -18,7 +18,8 @@
   ) {
 
     // Try to open app (Android example)
-    var appLink = "lokalinc://" + path;
+    var fullPath = window.location.pathname + window.location.search;
+    var appLink = "lokalinc://" + fullPath;
 
     // Redirect attempt
     window.location.href = appLink;
