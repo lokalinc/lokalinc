@@ -18,15 +18,42 @@
   ) {
 
     // Try to open app (Android example)
-    //var fullPath = window.location.pathname + window.location.search;
-    //var appLink = "lokalinc://" + fullPath;
     var fullPath = window.location.pathname.replace(/^\//, '') + window.location.search;
     var appLink = "lokalinc://" + fullPath;
+    
+    var isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+    var isAndroid = /Android/i.test(navigator.userAgent);
+    var appOpened = false;
+    
+    // Method 1: iframe (silent attempt)
+    var iframe = document.createElement("iframe");
+    iframe.style.display = "none";
+    iframe.src = appLink;
+    document.body.appendChild(iframe);
+    
+    // Method 2: try direct redirect shortly after
+    setTimeout(function () {
+      window.location.href = appLink;
+    }, 100);
+    
+    // Detect if app opened
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden) {
+        appOpened = true;
+      }
+    });
+    
+    // Fallback
+    setTimeout(function () {
+      if (!appOpened) {
+        if (isIOS) {
+          window.location.href = "https://lokalinc.de/privacy"; //YOUR_APP_STORE_URL
+        } else if (isAndroid) {
+          window.location.href = "https://lokalinc.de/imprint"; //YOUR_PLAY_STORE_URL
+        }
+      }
+    }, 1500);
 
-    // Redirect attempt
-    window.location.href = appLink;
-
-    // If app not opened, stay and show fallback
   }
 
 })();
