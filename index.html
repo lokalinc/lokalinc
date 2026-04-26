@@ -607,11 +607,46 @@ const countdown = setInterval(() => {
   const now = new Date().getTime();
   const distance = launchDate - now;
 
-  if (distance < 0) {
-    clearInterval(countdown);
-    document.getElementById("countdown").innerHTML = "We are live 🚀";
-    return;
+if (distance < 0) {
+  clearInterval(countdown);
+
+  const countdownEl = document.getElementById("countdown");
+
+  // Replace countdown with live message + store buttons
+  countdownEl.innerHTML = `
+    <div style="text-align:center;">
+      
+      <div style="font-size:22px; font-weight:700; color:#10b981;">
+        We are live 🚀
+      </div>
+
+      <div style="margin-top:2px; font-size:14px; color:#6b7280;">
+        Click below to download
+      </div>
+
+      <div style="margin-top:2px; display:flex; justify-content:center; gap:20px; flex-wrap:wrap;">
+        
+        <a href="https://forms.gle/99Tb4hTYShfcFLDL6" target="_blank">
+          <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" height="50">
+        </a>
+
+        <a href="https://play.google.com/store/apps/details?id=com.lokalinc.parth" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" height="50">
+        </a>
+
+      </div>
+
+    </div>
+  `;
+
+  // ❌ Hide the entire bottom launch section
+  const launchSection = document.querySelector(".launch");
+  if (launchSection) {
+    launchSection.style.display = "none";
   }
+
+  return;
+}
 
   const days = Math.floor(distance / (1000 * 60 * 60 * 24));
   const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
