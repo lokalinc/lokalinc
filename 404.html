@@ -2,97 +2,144 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>LokaLinc</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Open LokaLinc</title>
 
 <script>
 (function () {
-
   var path = window.location.pathname;
+  var search = window.location.search;
 
-  // Check if it is a deep link
-  if (
+  var isResetPassword = path.startsWith("/reset-password");
+
+  var isSharedPost =
     path.startsWith("/sublet/") ||
     path.startsWith("/travel/") ||
-    path.startsWith("/community/") ||
-    path.startsWith("/reset-password")
-  ) {
+    path.startsWith("/community/");
 
-    // Try to open app (Android example)
-    var fullPath = window.location.pathname.replace(/^\//, '') + window.location.search;
-    var appLink = "lokalinc://" + fullPath;
-    
-    var isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-    var isAndroid = /Android/i.test(navigator.userAgent);
-    var appOpened = false;
-    
-    // Method 1: iframe (silent attempt)
-    var iframe = document.createElement("iframe");
-    iframe.style.display = "none";
-    iframe.src = appLink;
-    document.body.appendChild(iframe);
-    
-    // Method 2: try direct redirect shortly after
-    setTimeout(function () {
-      window.location.href = appLink;
-    }, 100);
-    
-    // Detect if app opened
-    document.addEventListener("visibilitychange", function () {
-      if (document.hidden) {
-        appOpened = true;
-      }
-    });
-    
-    // Fallback
-    setTimeout(function () {
-      if (!appOpened) {
-        if (isIOS) {
-          window.location.href = "https://apps.apple.com/app/lokalinc/id6761270364"; //YOUR_APP_STORE_URL
-        } else if (isAndroid) {
-          window.location.href = "https://play.google.com/store/apps/details?id=com.lokalinc.parth"; //YOUR_PLAY_STORE_URL
-        }
-      }
-    }, 1500);
-
+  if (!isResetPassword && !isSharedPost) {
+    return;
   }
 
+  var fullPath = path.replace(/^\//, "") + search;
+  var appLink = "lokalinc://" + fullPath;
+
+  var appStoreUrl = "https://apps.apple.com/app/lokalinc/id6761270364";
+  var playStoreUrl = "https://play.google.com/store/apps/details?id=com.lokalinc.parth";
+
+  var isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+  var isAndroid = /Android/i.test(navigator.userAgent);
+  var appOpened = false;
+
+  function openApp() {
+    window.location.href = appLink;
+  }
+
+  document.addEventListener("visibilitychange", function () {
+    if (document.hidden) {
+      appOpened = true;
+    }
+  });
+
+  window.openLokaLincApp = openApp;
+
+  setTimeout(openApp, 300);
+
+  setTimeout(function () {
+    if (appOpened) return;
+
+    /*
+      IMPORTANT:
+      For reset-password, do NOT redirect to App Store / Play Store.
+      This protects your reset-password flow.
+    */
+    if (isResetPassword) {
+      return;
+    }
+
+    /*
+      For shared posts only:
+      If app is not installed, send user to store.
+    */
+    if (isIOS) {
+      window.location.href = appStoreUrl;
+    } else if (isAndroid) {
+      window.location.href = playStoreUrl;
+    }
+  }, 1800);
 })();
 </script>
 
 <style>
-body{
-  font-family:Arial, sans-serif;
-  text-align:center;
-  padding:40px;
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 40px 20px;
+  background: #f8fafc;
+  color: #1f2937;
 }
-.btn{
-  display:inline-block;
-  margin:10px;
-  padding:12px 20px;
-  background:#10b981;
-  color:white;
-  text-decoration:none;
-  border-radius:6px;
+
+.logo {
+  width: 90px;
+  margin-bottom: 16px;
+}
+
+h1 {
+  color: #10b981;
+}
+
+.btn {
+  display: inline-block;
+  margin: 10px;
+  padding: 12px 20px;
+  background: #10b981;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.store img {
+  height: 48px;
+  margin: 8px;
 }
 </style>
-
 </head>
 
 <body>
 
-<h1>Welcome to LokaLinc</h1>
+<img src="/Logo_LokaLinc_Transparent.png" class="logo" alt="LokaLinc logo">
 
-<p>It looks like the page you’re trying to access isn’t available here.</p>
+<h1>LokaLinc</h1>
 
-<br>
+<p>
+  We are trying to open this link in the LokaLinc app.
+</p>
 
-<a class="btn" href="https://lokalinc.de">Visit Website</a>
+<a class="btn" href="#" onclick="openLokaLincApp(); return false;">
+  Open App
+</a>
 
 <br><br>
 
-<p>For the best experience, please install and open LokaLinc on your device.</p>
-<p>You can find the download information on the main page.</p>
+<p>If the app is not installed, download it here:</p>
+
+<div class="store">
+  <a href="https://apps.apple.com/app/lokalinc/id6761270364">
+    <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
+  </a>
+
+  <a href="https://play.google.com/store/apps/details?id=com.lokalinc.parth">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play">
+  </a>
+</div>
+
+<br>
+
+<a class="btn" href="https://lokalinc.de">
+  Visit Website
+</a>
 
 </body>
-
 </html>
