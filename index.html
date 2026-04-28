@@ -66,6 +66,23 @@ font-weight:800;
 color:#10b981;
 }
 
+/* ---------- Buttons ---------- */
+
+.download-buttons {
+  margin-top: 24px;
+  text-align: center;
+}
+
+.download-buttons a {
+  display: inline-block;
+  margin: 8px;
+}
+
+.download-buttons img {
+  height: 48px;
+  width: auto;
+}
+
 /* ---------- Hero ---------- */
 
 .hero{
@@ -89,35 +106,6 @@ margin-bottom:10px;
 font-size:30px;
 }
 
-/* ---------- Count-down ---------- */
-
-.countdown {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-}
-
-.countdown div {
-  background: white;
-  padding: 12px 14px;
-  border-radius: 10px;
-  box-shadow: 0 8px 18px rgba(0,0,0,0.05);
-  min-width: 60px;
-}
-
-.countdown span {
-  display: block;
-  font-size: 18px;
-  font-weight: 700;
-  color: #10b981;
-}
-
-.countdown small {
-  font-size: 11px;
-  color: #6b7280;
-}
-
 /* ---------- PROBLEM + SOLUTION ---------- */
 
 .section-row{
@@ -132,17 +120,6 @@ margin-top:40px;
   text-align:center;
   max-width:800px;
   margin:10px auto 0;
-}
-
-.section-image{
-flex:1;
-display:flex;
-justify-content:center;
-}
-
-.section-image img{
-width:100%;
-max-width:250px;
 }
 
 .section-points{
@@ -178,21 +155,22 @@ text-align:center;
 }
 
 .section-image{
-min-height:260px;
-display:flex;
-align-items:center;
-justify-content:center;
+  flex:1;
+  min-height:260px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
 .section-image img{
-width:100%;
-max-width:250px;
-transition:transform 0.2s ease;
-cursor:pointer;
+  width:100%;
+  max-width:250px;
+  transition:transform 0.2s ease;
+  cursor:pointer;
 }
 
 .section-image img.zoomed{
-transform:scale(1.05);
+  transform:scale(1.05);
 }
 
 /* ---------- Solution Carousel ---------- */
@@ -211,6 +189,7 @@ gap:15px;
 overflow-x:auto;
 width:100%;
 max-width:250px;
+scroll-snap-type: x mandatory;
 }
 
 .carousel::-webkit-scrollbar{
@@ -284,71 +263,6 @@ text-decoration:none;
 color:#6b7280;
 }
 
-/* ---------- CTA ---------- */
-
-.cta{
-margin-top:20px;
-}
-
-.cta-btn{
-display:inline-block;
-padding:12px 20px;
-background:#10b981;
-color:white;
-border-radius:8px;
-text-decoration:none;
-font-weight:600;
-transition:0.2s;
-}
-
-.cta-btn:hover{
-background:#059669;
-}
-
-/* ---------- Launch Section ---------- */
-
-.launch{
-margin-top:40px;
-text-align:center;
-}
-
-.launch-badges{
-margin-top:20px;
-display:flex;
-justify-content:center;
-gap:30px;
-}
-
-.launch-badge-item{
-display:flex;
-flex-direction:column;
-align-items:center;
-}
-
-.launch-badges img{
-height:50px;
-object-fit:contain;
-}
-
-.launch-coming{
-margin-top:6px;
-font-size:12px;
-color:#10b981;
-font-weight:600;
-}
-
-.launch-text{
-margin-top:20px;
-font-size:16px;
-color:#374151;
-}
-
-.launch-note{
-margin-top:12px;
-font-size:12px;
-color:#6b7280;
-}
-
 /* ---------- Responsive ---------- */
 
 @media (max-width:768px){
@@ -373,10 +287,6 @@ height:220px;
 
 .solution-images img{
 width:90px;
-}
-
-.solution-images img.active{
-width:120px;
 }
 
 .features{
@@ -405,19 +315,23 @@ grid-template-columns:1fr;
 <div class="hero-brand">LokaLinc</div>
 <div class="tagline">Living and Moving Together</div>
 
-<!---------- Count-down section ---------->
-<div id="countdown" class="countdown">
-  <div><span id="days">00</span><small>Days</small></div>
-  <div><span id="hours">00</span><small>Hours</small></div>
-  <div><span id="minutes">00</span><small>Min</small></div>
-  <div><span id="seconds">00</span><small>Sec</small></div>
-</div>
-  
 <h1 class="hero-title">A community platform for expats in Germany</h1>
 <p>
 Connect with people who understand your situation and get the support you need without searching everywhere.<br>
 Find temporary housing, travel companionship, or item delivery, and get help with real-life questions when living or moving in Germany.
 </p>
+
+<div class="download-buttons">
+  
+  <a href="https://apps.apple.com/app/lokalinc/id6761270364" target="_blank" rel="noopener noreferrer">
+    <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
+  </a>
+
+  <a href="https://play.google.com/store/apps/details?id=com.lokalinc.parth" target="_blank" rel="noopener noreferrer">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play">
+  </a>
+</div>
+
 </section>
 
 <!---------- Problem section ---------->
@@ -469,9 +383,9 @@ With LokaLinc, instead of searching and posting everywhere, you can do it all in
   <div class="section-image solution-images">
   
     <div class="carousel">
-      <img src="Light1.jpg">
-      <img src="Light3.jpg">
-      <img src="Light5.jpg">
+      <img src="Light1.jpg" alt="LokaLinc app screen showing housing posts">
+      <img src="Light3.jpg" alt="LokaLinc app screen showing travel help">
+      <img src="Light5.jpg" alt="LokaLinc app screen showing community questions">
     </div>
   
     <div class="dots">
@@ -517,39 +431,6 @@ With LokaLinc, instead of searching and posting everywhere, you can do it all in
 
 </section>
 
-<!---------- Launch / Waitlist section ---------->
-
-<section class="launch">
-
-<div class="launch-badges">
-
-  <div class="launch-badge-item">
-    <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store">
-    <div class="launch-coming">Launching 26 April</div>
-  </div>
-
-  <div class="launch-badge-item">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play">
-    <div class="launch-coming">Launching 26 April</div>
-  </div>
-
-</div>
-
-<p class="launch-text">
-Get notified when LokaLinc launches.<br>
-Join the waitlist to be among the first users.
-</p>
-
-<a href="https://docs.google.com/forms/d/e/1FAIpQLSdR5SzuFea_y5iV_zatorZxH6Rm6RoHTKcKM335wVNL7zJxOQ/viewform" target="_blank" class="cta-btn">
-Join waitlist
-</a>
-
-<p class="launch-note">
-No marketing emails. You can opt out anytime.
-</p>
-
-</section>
-
 </div>
 
 <!---------- Footer section ---------->
@@ -566,8 +447,6 @@ No marketing emails. You can opt out anytime.
 </div>
 
 </footer>
-
-</div>
 
 <script>
 // problem image tap toggle
@@ -593,75 +472,12 @@ const dots = document.querySelectorAll('.dot');
 
 if(carousel){
   carousel.addEventListener('scroll', () => {
-    const index = Math.round(carousel.scrollLeft / 180);
+    const index = Math.round(carousel.scrollLeft / carousel.clientWidth);
     dots.forEach(d => d.classList.remove('active'));
     if(dots[index]) dots[index].classList.add('active');
   });
 }
 </script>
-
-<script>
-const launchDate = new Date("April 26, 2026 10:00:00").getTime();
-
-const countdown = setInterval(() => {
-  const now = new Date().getTime();
-  const distance = launchDate - now;
-
-if (distance < 0) {
-  clearInterval(countdown);
-
-  const countdownEl = document.getElementById("countdown");
-
-  // Replace countdown with live message + store buttons
-  countdownEl.innerHTML = `
-    <div style="text-align:center;">
-      
-      <div style="font-size:22px; font-weight:700; color:#10b981;">
-        We are live 🚀
-      </div>
-
-      <div style="margin-top:2px; font-size:14px; color:#6b7280;">
-        Click below to download
-      </div>
-
-      <div style="margin-top:2px; display:flex; justify-content:center; gap:20px; flex-wrap:wrap;">
-        
-        <a href="https://apps.apple.com/app/lokalinc/id6761270364" target="_blank">
-          <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" height="50">
-        </a>
-
-        <a href="https://play.google.com/store/apps/details?id=com.lokalinc.parth" target="_blank">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" height="50">
-        </a>
-
-      </div>
-
-    </div>
-  `;
-
-  // ❌ Hide the entire bottom launch section
-  const launchSection = document.querySelector(".launch");
-  if (launchSection) {
-    launchSection.style.display = "none";
-  }
-
-  return;
-}
-
-  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
-  const minutes = Math.floor((distance / (1000 * 60)) % 60);
-  const seconds = Math.floor((distance / 1000) % 60);
-
-  document.getElementById("days").innerText = days;
-  document.getElementById("hours").innerText = String(hours).padStart(2, '0');
-  document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
-  document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
-
-}, 1000);
-</script>
-
-</body>
 
 </body>
 </html>
