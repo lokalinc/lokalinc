@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex, nofollow" />
   <title>LokaLinc Dashboard</title>
+
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <style>
@@ -14,7 +15,6 @@
       --light: #ecfdf5;
       --text: #111827;
       --muted: #6b7280;
-      --card: #ffffff;
     }
 
     * { box-sizing: border-box; }
@@ -30,7 +30,7 @@
       width: 390px;
       min-height: 844px;
       margin: 20px auto;
-      padding: 30px 22px;
+      padding: 22px 22px 20px;
       background:
         radial-gradient(circle at top right, rgba(16,185,129,0.25), transparent 32%),
         linear-gradient(180deg, #ffffff 0%, #ecfdf5 100%);
@@ -40,15 +40,21 @@
     }
 
     .header {
-      text-align: center;
-      margin-bottom: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 10px;
     }
 
     .logo {
-      width: 58px;
-      height: 58px;
+      width: 48px;
+      height: 48px;
       object-fit: contain;
-      margin-bottom: 8px;
+    }
+
+    .header-text {
+      text-align: left;
     }
 
     h1 {
@@ -56,17 +62,22 @@
       font-size: 28px;
       color: var(--dark);
       letter-spacing: -0.5px;
+      line-height: 1;
     }
 
     .subtitle {
-      margin-top: 6px;
+      margin-top: 5px;
       font-size: 14px;
       color: var(--muted);
     }
 
+    .badge-wrap {
+      text-align: center;
+      margin-bottom: 14px;
+    }
+
     .badge {
       display: inline-block;
-      margin-top: 12px;
       background: var(--green);
       color: white;
       padding: 7px 14px;
@@ -78,9 +89,9 @@
     .hero-card {
       background: var(--dark);
       color: white;
-      border-radius: 28px;
-      padding: 22px;
-      margin-bottom: 14px;
+      border-radius: 26px;
+      padding: 20px;
+      margin-bottom: 12px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -88,7 +99,7 @@
     }
 
     .hero-number {
-      font-size: 48px;
+      font-size: 44px;
       font-weight: 950;
       line-height: 1;
     }
@@ -96,18 +107,18 @@
     .hero-label {
       margin-top: 6px;
       font-size: 14px;
-      color: rgba(255,255,255,0.8);
+      color: rgba(255,255,255,0.82);
     }
 
     .hero-icon {
-      font-size: 42px;
+      font-size: 40px;
     }
 
     .section-title {
-      margin: 18px 4px 10px;
+      margin: 14px 4px 9px;
       font-size: 14px;
       font-weight: 900;
-      color: var(--dark);
+      color: var(--green);
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -121,29 +132,29 @@
 
     .feature-list {
       display: grid;
-      gap: 10px;
+      gap: 9px;
     }
 
     .feature-card {
-      background: rgba(255,255,255,0.9);
+      background: rgba(255,255,255,0.92);
       border: 1px solid rgba(16,185,129,0.2);
-      border-radius: 24px;
-      padding: 16px;
+      border-radius: 22px;
+      padding: 14px;
       display: grid;
-      grid-template-columns: 44px 1fr auto;
+      grid-template-columns: 42px 1fr auto;
       align-items: center;
-      gap: 12px;
+      gap: 11px;
       box-shadow: 0 10px 22px rgba(16,185,129,0.08);
     }
 
     .feature-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 16px;
+      width: 42px;
+      height: 42px;
+      border-radius: 15px;
       background: var(--light);
       display: grid;
       place-items: center;
-      font-size: 22px;
+      font-size: 21px;
     }
 
     .feature-name {
@@ -159,16 +170,31 @@
     }
 
     .feature-number {
-      font-size: 30px;
+      text-align: right;
+      color: var(--green);
       font-weight: 950;
-      color: var(--dark);
+      min-width: 58px;
+    }
+
+    .feature-number span {
+      display: block;
+      font-size: 27px;
+      line-height: 1;
+    }
+
+    .feature-number small {
+      display: block;
+      margin-top: 3px;
+      font-size: 11px;
+      color: var(--muted);
+      font-weight: 800;
     }
 
     .chart-card {
-      margin-top: 16px;
+      margin-top: 14px;
       background: rgba(255,255,255,0.92);
-      border-radius: 26px;
-      padding: 18px;
+      border-radius: 24px;
+      padding: 16px 18px 14px;
       border: 1px solid rgba(16,185,129,0.18);
       box-shadow: 0 10px 22px rgba(16,185,129,0.08);
     }
@@ -177,7 +203,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
     }
 
     .chart-title strong {
@@ -189,9 +215,20 @@
       font-size: 12px;
       color: var(--muted);
     }
+    
+    .chart-box {
+      position: relative;
+      height: 125px;
+      width: 100%;
+    }
+    
+    .chart-box canvas {
+      width: 100% !important;
+      height: 125px !important;
+    }
 
     .footer {
-      margin-top: 24px;
+      margin-top: 18px;
       text-align: center;
     }
 
@@ -202,7 +239,7 @@
     }
 
     .cta {
-      margin-top: 8px;
+      margin-top: 7px;
       color: var(--muted);
       font-size: 13px;
     }
@@ -234,22 +271,26 @@
 
     <div class="header">
       <img src="Logo_LokaLinc_Transparent.png" class="logo" alt="LokaLinc Logo" />
-      <h1>LokaLinc</h1>
-      <div class="subtitle">Dashboard</div>
+      <div class="header-text">
+        <h1>LokaLinc</h1>
+        <div class="subtitle">Dashboard</div>
+      </div>
+    </div>
+
+    <div class="badge-wrap">
       <div class="badge">Day 3 after launch 🚀</div>
     </div>
 
     <div class="hero-card">
       <div>
         <div class="hero-number" id="totalUsers">120</div>
-        <div class="hero-label">Total registered users</div>
+        <div class="hero-label">Registered users</div>
       </div>
       <div class="hero-icon">👥</div>
     </div>
 
     <div class="section-title">
-      Community activity
-      <span>across 3 features</span>
+      Activity created by users
     </div>
 
     <div class="feature-list">
@@ -257,27 +298,36 @@
         <div class="feature-icon">🏠</div>
         <div>
           <div class="feature-name">Accommodation</div>
-          <div class="feature-desc">Posts & requests</div>
+          <div class="feature-desc">Housing posts & requests</div>
         </div>
-        <div class="feature-number" id="accommodationPosts">18</div>
+        <div class="feature-number">
+          <span id="accommodationPosts">18</span>
+          <small>posts</small>
+        </div>
       </div>
 
       <div class="feature-card">
         <div class="feature-icon">✈️</div>
         <div>
-          <div class="feature-name">Travel</div>
-          <div class="feature-desc">India ↔ Germany routes</div>
+          <div class="feature-name">Travel Help</div>
+          <div class="feature-desc">India ↔ Germany travel</div>
         </div>
-        <div class="feature-number" id="travelRoutes">9</div>
+        <div class="feature-number">
+          <span id="travelRoutes">9</span>
+          <small>routes</small>
+        </div>
       </div>
 
       <div class="feature-card">
         <div class="feature-icon">💬</div>
         <div>
           <div class="feature-name">Community</div>
-          <div class="feature-desc">Discussion posts</div>
+          <div class="feature-desc">Visa, jobs, finance etc.</div>
         </div>
-        <div class="feature-number" id="communityPosts">27</div>
+        <div class="feature-number">
+          <span id="communityPosts">27</span>
+          <small>posts</small>
+        </div>
       </div>
     </div>
 
@@ -286,7 +336,10 @@
         <strong>Daily Users</strong>
         <span>days</span>
       </div>
-      <canvas id="dailyUsersChart" height="145"></canvas>
+    
+      <div class="chart-box">
+        <canvas id="dailyUsersChart"></canvas>
+      </div>
     </div>
 
     <div class="footer">
@@ -344,6 +397,7 @@
       },
       options: {
         responsive: true,
+        maintainAspectRatio: false,
         plugins: {
           legend: { display: false },
           tooltip: { enabled: false }
