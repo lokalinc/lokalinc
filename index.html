@@ -412,6 +412,13 @@ color:#10b981;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  
+  /* Fix for iOS Safari */
+  color: #inherit;
+  font-family: inherit;
+  -webkit-appearance: none;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* + icon */
@@ -579,7 +586,7 @@ color:#10b981;
 .feedback-cta {
   margin: 40px auto 0;
   text-align: center;
-  max-width: 380px;
+  max-width: 320px;
   width: 100%;
   background: white;
   border-radius: 14px;
