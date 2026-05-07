@@ -56,6 +56,7 @@ align-items:center;
 gap:12px;
 padding:15px 20px;
 box-shadow:0 2px 10px rgba(0,0,0,0.05);
+justify-content: space-between;
 }
 
 .logo{ height:40px; }
@@ -66,10 +67,89 @@ font-weight:800;
 color:#10b981;
 }
 
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.header-nav a {
+  color: #374151;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.header-nav a:hover {
+  color: #10b981;
+}
+
+.nav-cta {
+  background: #10b981;
+  color: white !important;
+  padding: 8px 14px;
+  border-radius: 12px;
+}
+
+/* Hamburger button */
+.hamburger {
+  display: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: white;
+  color: #1f2937;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.06);
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* Mobile menu */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 72px;
+  right: 16px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 16px 35px rgba(0,0,0,0.12);
+  padding: 10px;
+  min-width: 160px;
+  flex-direction: column;
+  gap: 4px;
+  z-index: 300;
+}
+
+.mobile-menu a {
+  text-decoration: none;
+  color: #374151;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 12px 14px;
+  border-radius: 10px;
+}
+
+.mobile-menu a:hover {
+  background: #ecfdf5;
+  color: #10b981;
+}
+
+.mobile-menu.active {
+  display: flex;
+}
+
 /* ---------- Buttons ---------- */
 
 .download-buttons {
-  margin-top: 24px;
+  margin-top: 15px;
   text-align: center;
 }
 
@@ -81,6 +161,35 @@ color:#10b981;
 .download-buttons img {
   height: 48px;
   width: auto;
+}
+
+/* ---------- Trust Strip ---------- */
+
+.trust-strip {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.trust-strip div {
+  background: white;
+  border-radius: 12px;
+  padding: 10px 16px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.trust-strip strong {
+  color: #10b981;
+  font-size: 15px;
+  margin-right: 5px;
+}
+
+.trust-strip span {
+  color: #6b7280;
 }
 
 /* ---------- Hero ---------- */
@@ -107,7 +216,7 @@ font-size:30px;
 }
 
 .hero-social {
-  margin-top: 12px;
+  margin-top: 10px;
   font-size: 13px;
   color: #6b7280;
 }
@@ -116,7 +225,7 @@ font-size:30px;
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  margin-top: 12px;
+  margin-top: 10px;
   font-size: 13px;
   color: #10b981;
   text-decoration: none;
@@ -267,6 +376,204 @@ box-shadow:0 10px 25px rgba(0,0,0,0.06);
 color:#10b981;
 }
 
+/* ---------- FAQ Section ---------- */
+
+.faq {
+  margin-top: 60px;
+}
+
+.faq-container {
+  max-width: 700px;
+  margin: 20px auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Each item */
+.faq-item {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+  overflow: hidden;
+}
+
+/* Question button */
+.faq-question {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 16px 18px;
+  text-align: left;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* + icon */
+.faq-icon {
+  font-size: 18px;
+  color: #10b981;
+  transition: transform 0.2s ease;
+}
+
+/* Answer (hidden by default) */
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 18px;
+  font-size: 14px;
+  color: #6b7280;
+  transition: max-height 0.25s ease, padding 0.25s ease;
+}
+
+/* Active state */
+.faq-item.active .faq-answer {
+  max-height: 120px;
+  padding: 10px 18px 16px;
+}
+
+.faq-item.active .faq-icon {
+  transform: rotate(45deg); /* turns + into × */
+}
+
+/* ---------- Reviews Section ---------- */
+
+/* Overall spacing for the section */
+.reviews {
+  margin-top: 60px;
+}
+
+/* Wrapper used for right-side fade hint */
+.review-wrapper {
+  position: relative;
+}
+
+/* Horizontal scroll container */
+.review-scroll {
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+
+  /* spacing (extra bottom for scrollbar) */
+  padding: 20px 4px 26px;
+
+  /* snap behavior (cards snap to center) */
+  scroll-snap-type: x mandatory;
+  scroll-padding: 0 20px;
+
+  /* Firefox scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: #10b981 #e5e7eb;
+}
+
+/* Chrome scrollbar height */
+.review-scroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+/* Track (background of scrollbar) */
+.review-scroll::-webkit-scrollbar-track {
+  background: #e5e7eb;
+  border-radius: 999px;
+}
+
+/* Thumb (draggable part) */
+.review-scroll::-webkit-scrollbar-thumb {
+  background: #10b981;
+  border-radius: 999px;
+}
+
+/* Individual review card */
+.review-card {
+  flex: 0 0 320px; /* fixed width for horizontal scroll */
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+
+  /* snap to center */
+  scroll-snap-align: center;
+
+  /* default (inactive state) */
+  transform: scale(0.94);
+  opacity: 0.75;
+
+  /* smooth animation */
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+/* Active (centered) card highlight */
+.review-card.active {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* Header (DP + name + stars) */
+.review-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+/* DP circle (initial-based avatar) */
+.review-dp {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #ecfdf5;
+  color: #10b981;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 16px;
+}
+
+/* Reviewer name */
+.review-name {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+/* Star rating */
+.review-stars {
+  font-size: 13px;
+  color: #f59e0b;
+}
+
+/* App source (App Store / Google Play) */
+.review-source {
+  color: #6b7280;
+  font-size: 12px;
+}
+
+/* Review text */
+.review-text {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #374151;
+}
+
+/* Right-side fade to indicate more content */
+.review-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  right: 0;
+  width: 60px;
+  height: calc(100% - 46px);
+  pointer-events: none;
+
+  /* fade from transparent → background color */
+  background: linear-gradient(to right, transparent, #f8fafc);
+}
+
 /* ---------- Footer ---------- */
 
 footer{
@@ -319,6 +626,14 @@ width:90px;
 grid-template-columns:1fr;
 }
 
+.header-nav {
+display: none;
+}
+
+.hamburger {
+display: flex;
+}
+
 }
 
 </style>
@@ -329,9 +644,29 @@ grid-template-columns:1fr;
 <!---------- Header section ---------->
 
 <header>
-<img src="Logo_LokaLinc_Transparent.png" class="logo" alt="LokaLinc logo">
-<div class="brand">LokaLinc</div>
+  <div class="header-left">
+    <img src="Logo_LokaLinc_Transparent.png" class="logo" alt="LokaLinc logo">
+    <div class="brand">LokaLinc</div>
+  </div>
+
+  <nav class="header-nav">
+    <a href="#faq">FAQs</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#download" class="nav-cta">Download</a>
+  </nav>
+  
+    <!-- Hamburger -->
+  <div class="hamburger" id="hamburger">
+    ☰
+  </div>
 </header>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#faq">FAQs</a>
+  <a href="#reviews">Reviews</a>
+  <a href="#download">Download</a>
+</div>  
 
 <div class="container">
   
@@ -342,20 +677,34 @@ grid-template-columns:1fr;
 <div class="tagline">Living and Moving Together</div>
 
 <h1 class="hero-title">A community platform for expats in Germany</h1>
-<p>
+<p style="margin-bottom:10px;">
 Connect with people who understand your situation and get the support you need without searching everywhere.<br>
+</p>
+<p style="margin-top:10px;">
 Find temporary housing, travel companionship, or item delivery, and get help with real-life questions when living or moving in Germany.
 </p>
 
-<div class="download-buttons">
-  
-  <a href="https://apps.apple.com/app/lokalinc/id6761270364" target="_blank" rel="noopener noreferrer">
-    <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
-  </a>
+<div id="download" style="text-align:center; margin-top:15px;">
+  <h2 style="margin-bottom:6px;">Join the community</h2>
 
-  <a href="https://play.google.com/store/apps/details?id=com.lokalinc.parth" target="_blank" rel="noopener noreferrer">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play">
-  </a>
+  <p style="color:#6b7280; font-size:14px; margin-top:0;">
+    Start connecting with expats across Germany today
+  </p>
+
+  <div class="download-buttons">
+    <a href="https://apps.apple.com/app/lokalinc/id6761270364" target="_blank">
+      <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg">
+    </a>
+
+    <a href="https://play.google.com/store/apps/details?id=com.lokalinc.parth" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg">
+    </a>
+  </div>
+</div>
+
+
+<div class="trust-strip">
+  <div><strong>200+</strong><span>expats using LokaLinc</span></div>
 </div>
 
 <div class="hero-social">
@@ -466,6 +815,108 @@ With LokaLinc, instead of searching and posting everywhere, you can do it all in
 
 </section>
 
+<!---------- FAQ section ---------->
+
+<section id="faq" class="faq">
+  <h2 style="text-align:center;">Frequently Asked Questions</h2>
+
+  <div class="faq-container">
+
+    <div class="faq-item">
+      <button class="faq-question">
+        Is LokaLinc free to use?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        Yes, you can join and start using LokaLinc for free.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        Who is LokaLinc for?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        LokaLinc is built for expats in Germany who need help with housing, travel coordination, or everyday questions.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        How is this different from WhatsApp or Facebook groups?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        Instead of searching and posting in multiple places, everything is organized in one platform where people can easily find and respond to relevant requests.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!---------- Review section ---------->
+
+<section id="reviews" class="reviews">
+  <h2 style="text-align:center;">What people say</h2>
+
+  <div class="review-wrapper">
+    <div class="review-scroll">
+
+      <!-- Review 1 -->
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-dp">D</div>
+          <div>
+            <div class="review-name">Dishita</div>
+            <div class="review-stars">
+              ★★★★★ <span class="review-source"></span>
+            </div>
+          </div>
+        </div>
+        <p class="review-text">
+          This app isn't just about features - it's about making life easier, smarter, and a little better for everyone. 💡 A Great Initiative 👏 😍.
+        </p>
+      </div>
+
+      <!-- Review 2 -->
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-dp">R</div>
+          <div>
+            <div class="review-name">Rutvik</div>
+            <div class="review-stars">
+              ★★★★★ <span class="review-source">·</span>
+            </div>
+          </div>
+        </div>
+        <p class="review-text">
+          Downloaded the app. It's really good...👏👏
+        </p>
+      </div>
+
+      <!-- Review 3 -->
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-dp">V</div>
+          <div>
+            <div class="review-name">Vishnu Jha</div>
+            <div class="review-stars">
+              ★★★★★ <span class="review-source">·</span>
+            </div>
+          </div>
+        </div>
+        <p class="review-text">
+          Nice app 🔥
+        </p>
+      </div>
+      
+      <!-- Add more by duplicating above -->
+
+    </div>
+  </div>
+</section>
+
 </div>
 
 <!---------- Footer section ---------->
@@ -491,6 +942,32 @@ With LokaLinc, instead of searching and posting everywhere, you can do it all in
 </div>
 
 </footer>
+
+<script>
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+
+hamburger.addEventListener('click', (e) => {
+  e.stopPropagation();
+  mobileMenu.classList.toggle('active');
+});
+
+mobileMenuLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    mobileMenu.classList.remove('active');
+  });
+});
+
+document.addEventListener('click', (e) => {
+  const clickedInsideMenu = mobileMenu.contains(e.target);
+  const clickedHamburger = hamburger.contains(e.target);
+
+  if (!clickedInsideMenu && !clickedHamburger) {
+    mobileMenu.classList.remove('active');
+  }
+});
+</script>
 
 <script>
 // problem image tap toggle
@@ -520,6 +997,59 @@ if(carousel){
     dots.forEach(d => d.classList.remove('active'));
     if(dots[index]) dots[index].classList.add('active');
   });
+}
+</script>
+
+<script>
+const faqItems = document.querySelectorAll('.faq-item');
+
+faqItems.forEach(item => {
+  const button = item.querySelector('.faq-question');
+
+  button.addEventListener('click', () => {
+    const isOpen = item.classList.contains('active');
+
+    // close all
+    faqItems.forEach(i => i.classList.remove('active'));
+
+    // open current if it was closed
+    if (!isOpen) {
+      item.classList.add('active');
+    }
+  });
+});
+</script>
+
+<script>
+const reviewScroll = document.querySelector('.review-scroll');
+const reviewCards = document.querySelectorAll('.review-card');
+
+function updateActiveReview() {
+  if (!reviewScroll || reviewCards.length === 0) return;
+
+  const scrollCenter = reviewScroll.scrollLeft + reviewScroll.clientWidth / 2;
+
+  let closestCard = null;
+  let closestDistance = Infinity;
+
+  reviewCards.forEach(card => {
+    const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+    const distance = Math.abs(scrollCenter - cardCenter);
+
+    if (distance < closestDistance) {
+      closestDistance = distance;
+      closestCard = card;
+    }
+  });
+
+  reviewCards.forEach(card => card.classList.remove('active'));
+  if (closestCard) closestCard.classList.add('active');
+}
+
+if (reviewScroll) {
+  reviewScroll.addEventListener('scroll', updateActiveReview);
+  window.addEventListener('load', updateActiveReview);
+  window.addEventListener('resize', updateActiveReview);
 }
 </script>
 
