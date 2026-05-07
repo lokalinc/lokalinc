@@ -412,6 +412,13 @@ color:#10b981;
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  /* Fix for iOS Safari */
+  color: inherit;
+  font-family: inherit;
+  -webkit-appearance: none;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* + icon */
